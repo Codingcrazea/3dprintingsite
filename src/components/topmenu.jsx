@@ -1,53 +1,49 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { IoIosArrowDown } from 'react-icons/io';
+import { IoIosMenu, IoMdClose } from 'react-icons/io';
 
-
-
-
-
-
-
-function topmenu() {
-    const [loggenin, setloggedin] = useState(false);
-
-
+function Topmenu() {
     const [user, setUser] = useState(null);
     const [isProfileOpen, setIsProfileOpen] = useState(false);
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     useEffect(() => {
-        const u = sessionStorage.getItem("useId") || null;
+        const u = sessionStorage.getItem('useId') || null;
         if (u) {
-            // Simulate fetching user data (replace with real fetch if needed)
             setUser({
-                name: "Sanskar",
-                email: "sanskar@example.com",
-                profileImage: "/images/user.jpg", // or default
+                name: 'Sanskar',
+                email: 'sanskar@example.com',
+                profileImage: '/images/user.jpg',
             });
         }
-
     }, []);
+
     return (
+        <header className="bg-white shadow-md">
+            <nav className="max-w-7xl md:w-auto sm:w-auto lg:w-auto  mx-auto px-4 py-4 flex justify-between items-center">
+                {/* Logo */}
+                <Link to="/" className="text-2xl font-bold text-[#6A38C2]">
+                    3DPrintHub
+                </Link>
 
+                {/* Desktop Menu */}
+                <ul className="hidden md:flex gap-6 text-lg text-gray-700 font-medium">
+                    <li className="hover:scale-105 transition-all duration-300">
+                        <Link to="/">Home</Link>
+                    </li>
+                    <li className="hover:scale-105 transition-all duration-300">
+                        <Link to="/about">About</Link>
+                    </li>
+                    <li className="hover:scale-105 transition-all duration-300">
+                        <Link to="/privacy">Privacy</Link>
+                    </li>
+                    <li className="hover:scale-105 transition-all duration-300">
+                        <Link to="/contact3dhub">Contact</Link>
+                    </li>
+                </ul>
 
-
-
-        <div>
-            <nav className="bg-white shadow-md px-6 py-4 flex justify-between items-center">
-                <div className="flex items-center gap-10">
-                    <Link to="/" className="text-2xl font-bold text-[#6A38C2]">
-                        3DPrintHub
-                    </Link>
-                    <ul className="flex gap-6 text-lg text-gray-700 font-medium ">
-                        <li className='hover:scale-105 transition-all duration-500' ><Link to="/">Home</Link></li>
-                        <li className='hover:scale-105 transition-all duration-500'><Link to="/services">Services</Link></li>
-                        <li className='hover:scale-105 transition-all duration-500'><Link to="/pricing">Pricing</Link></li>
-                        <li className='hover:scale-105 transition-all duration-500'><Link to="/contact">Contact</Link></li>
-                    </ul>
-                </div>
-
-                {/* Right - Auth or Profile */}
-                <div className="flex items-center gap-4">
+                {/* Right Section */}
+                <div className="hidden md:flex items-center gap-4">
                     {!user ? (
                         <>
                             <Link
@@ -66,7 +62,7 @@ function topmenu() {
                     ) : (
                         <div className="relative">
                             <img
-                                src={user.profileImage || "/default-profile.png"}
+                                src={user.profileImage || '/default-profile.png'}
                                 alt="User"
                                 className="w-10 h-10 rounded-full cursor-pointer"
                                 onClick={() => setIsProfileOpen(!isProfileOpen)}
@@ -78,11 +74,15 @@ function topmenu() {
                                         <p className="text-sm text-gray-500">{user.email}</p>
                                     </div>
                                     <hr />
-                                    <Link to="/profile" className="block px-4 py-2 hover:bg-gray-100">Profile</Link>
-                                    <Link to="/orders" className="block px-4 py-2 hover:bg-gray-100">My Orders</Link>
+                                    <Link to="/profile" className="block px-4 py-2 hover:bg-gray-100">
+                                        Profile
+                                    </Link>
+                                    <Link to="/orders" className="block px-4 py-2 hover:bg-gray-100">
+                                        My Orders
+                                    </Link>
                                     <button
                                         onClick={() => {
-                                            // logout logic here
+                                            // logout logic
                                         }}
                                         className="block px-4 py-2 text-red-600 hover:bg-gray-100 w-full text-left"
                                     >
@@ -93,11 +93,48 @@ function topmenu() {
                         </div>
                     )}
                 </div>
+
+                {/* Mobile Menu Button */}
+                <button
+                    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                    className="md:hidden text-3xl text-[#6A38C2]"
+                >
+                    {mobileMenuOpen ? <IoMdClose /> : <IoIosMenu />}
+                </button>
             </nav>
 
+            {/* Mobile Dropdown Menu */}
+            {mobileMenuOpen && (
+                <div className="md:hidden px-4 pb-4 space-y-3 text-lg text-gray-700">
+                    <Link to="/" className="block">Home</Link>
+                    <Link to="/about" className="block">About</Link>
+                    <Link to="/privacy" className="block">Privacy</Link>
+                    <Link to="/contact3dhub" className="block">Contact</Link>
 
-        </div>
-    )
+                    {!user ? (
+                        <>
+                            <Link to="/login" className="block text-[#6A38C2]">Login</Link>
+                            <Link to="/register3dp" className="block text-white bg-[#6A38C2] px-3 py-2 rounded">Sign Up</Link>
+                        </>
+                    ) : (
+                        <div className="space-y-2">
+                            <p className="font-semibold">{user.name}</p>
+                            <Link to="/profile" className="block">Profile</Link>
+                            <Link to="/orders" className="block">My Orders</Link>
+                            <button
+                                onClick={() => {
+                                    // logout logic
+                                }}
+                                className="text-red-600"
+                            >
+                                Logout
+                            </button>
+                        </div>
+                    )}
+                </div>
+            )}
+        </header>
+    );
 }
 
-export default topmenu;
+export default Topmenu;
