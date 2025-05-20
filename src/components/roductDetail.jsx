@@ -92,10 +92,10 @@ function ProductDetail() {
 
                     <div className="flex gap-4 mt-4">
                         <button className="px-6 py-3 bg-blue-600 text-white rounded-xl hover:scale-105 transition transform shadow-xl hover:shadow-blue-400 shine-effect">
-                            Buy Now
+                            Order Now
                         </button>
                         <button className="px-6 py-3 border border-blue-600 text-blue-600 rounded-xl hover:bg-blue-50 transition hover:scale-105">
-                            Call to Order
+                            Call to brief
                         </button>
                     </div>
                 </div>
