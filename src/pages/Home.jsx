@@ -23,7 +23,7 @@ function Home() {
         <div>
             <Topmenu />
           
-                <div className='w-full relative overflow-hidden rounded-lg shadow-lg'  >
+                <div className='w-full relative overflow-hidden rounded-lg shadow-lg '  >
                     <Carousel />
 
 

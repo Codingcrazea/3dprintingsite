@@ -14,6 +14,14 @@ import About from "./components/Aboutusoage";
 import Contactus3dhub from "./components/Contactuspage";
 import Privacy from "./pages/PrivacyPolicy";
 
+
+
+
+import Admin from "./components/ourAdmin/test";
+import CustomerDetail from './components/ourAdmin/CustomerDetail'
+import Customers from './components/ourAdmin/Customers'
+
+
 function App() {
   const [count, setCount] = useState(0);
 
@@ -50,7 +58,20 @@ function App() {
     {
       path:"/privacy",
       element:<Privacy/>
+    },
+    {
+      path:"/adm",
+      element:<Customers/>
+    },
+    {
+      path:"/ad",
+      element:<Admin/>
+    },
+    {
+      path:"/cd/:id",
+      element:<CustomerDetail/>
     }
+  
   ])
 
   return (

@@ -11,7 +11,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 
@@ -149,7 +149,7 @@ function sliderproduct() {
 
 
   const [showTyped, setShowTyped] = useState(false);
-
+  const nav = useNavigate();
   useEffect(() => {
     setShowTyped(true);
   }, []);
@@ -290,6 +290,9 @@ function sliderproduct() {
                   {/* Hover-only Button */}
                   <button
                     className="absolute bottom-4 bg-purple-600 text-white px-4 py-2 rounded-md text-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    onClick={()=>{
+                      nav("/product_detail")
+                    }}
                   >
                     Make
                   </button>

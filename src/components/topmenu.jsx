@@ -17,28 +17,31 @@ function Topmenu() {
             });
         }
     }, []);
-
     return (
-        <header className="bg-white shadow-md">
-            <nav className="max-w-7xl md:w-auto sm:w-auto lg:w-auto  mx-auto px-4 py-4 flex justify-between items-center">
+        <header className="bg-black shadow-md t ">
+            <nav className="  max-w-7xl md:w-auto sm:w-auto lg:w-auto  mx-auto px-4 py-4 flex justify-between items-center">
                 {/* Logo */}
                 <Link to="/" className="text-2xl font-bold text-[#6A38C2]">
-                    3DPrintHub
+                    <img
+                        src="/GOPRINT3D.png"
+                        alt="Logo"
+                        className="rounded-full w-16 h-16 md:w-16 md:h-16 lg:w-16 lg:h-16 object-cover border-white border-2 shadow-2xl shadow-white"
+                    />
                 </Link>
 
                 {/* Desktop Menu */}
-                <ul className="hidden md:flex gap-6 text-lg text-gray-700 font-medium">
+                <ul className="hidden md:flex gap-6 text-lg bg-black text-gray-700 font-medium">
                     <li className="hover:scale-105 transition-all duration-300">
-                        <Link to="/">Home</Link>
+                        <Link to="/" className='bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-200 bg-clip-text text-transparent' >Home</Link>
                     </li>
                     <li className="hover:scale-105 transition-all duration-300">
-                        <Link to="/about">About</Link>
+                        <Link to="/about" className='bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-200 bg-clip-text text-transparent' >About</Link>
                     </li>
                     <li className="hover:scale-105 transition-all duration-300">
-                        <Link to="/privacy">Privacy</Link>
+                        <Link to="/privacy" className='bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-200 bg-clip-text text-transparent' >Privacy</Link>
                     </li>
                     <li className="hover:scale-105 transition-all duration-300">
-                        <Link to="/contact3dhub">Contact</Link>
+                        <Link to="/contact3dhub"className='bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-200 bg-clip-text text-transparent'  >Contact</Link>
                     </li>
                 </ul>
 
@@ -48,13 +51,13 @@ function Topmenu() {
                         <>
                             <Link
                                 to="/login"
-                                className="px-4 py-2 text-[#6A38C2] border border-[#6A38C2] rounded hover:bg-[#6A38C2] hover:text-white transition"
+                                className="px-4 py-2 font-normal  border  rounded hover:bg-[#6A38C2] hover:text-white transition bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-200 bg-clip-text text-transparent bg-amber-400 "
                             >
                                 Login
                             </Link>
                             <Link
                                 to="/register3dp"
-                                className="px-4 py-2 bg-[#6A38C2] text-white rounded hover:bg-[#4c2491] transition"
+                                className="px-4 py-2  font-normal border rounded hover:bg-[#4c2491] transition hover:text-white  bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-200 bg-clip-text text-transparent"
                             >
                                 Sign Up
                             </Link>
